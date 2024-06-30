@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChitChat Forum</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/c5ef7dfac7.js" crossorigin="anonymous"></script>
+
+   
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+    .mulish{
+      font-family: "Mulish", sans-serif;
+    }
+    .inter{
+    font-family: "Inter", sans-serif;
+    }    
+
+    /* text gradient */
+    .gradient{
+        background-clip: text; 
+        color: transparent; 
+        background-image: linear-gradient(to right, violet, #3F4E75);
+    }
+    
+    </style>
+
+    <!-- daisy UI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="mulish">
+    <header id="home" class="container mx-auto">
+        <div class="navbar mt-8 bg-[background: rgb(30, 30, 30);]">
+            <div class="navbar-start gap-4">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class=" lg:hidden">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </div>
+                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                      <li><a><i class="fa-solid fa-house"></i><h3>Home</h3></a></li>
+                      <li><a><i class="fa-solid fa-pen"></i><h3>Publish</h3></a></li>
+                      <li><a href=""><i class="fa-solid fa-user-plus"></i><h3>Add Friends</h3></a></li>
+                      <li><a href=""><i class="fa-regular fa-flag"></i><h3>Report</h3></a></li>
+                    </ul>
+                </div>
+              <a class="text-[#12132D] text-4xl font-black mulish">ChitChat</a>
+            </div>
+            
+            <div class="navbar-end">
+                <div class="hidden lg:flex">
+                    <ul class="menu menu-horizontal px-4 gap-4">
+                        <button class="btn rounded-full tooltip" data-tip="Home"><a href="#" class=""><i class="fa-solid fa-house"></i></a></button>
+                        <button class="btn rounded-full tooltip" data-tip="Publish"><a href="#" class=""><i class="fa-solid fa-pen"></i></a></button>
+                        <button class="btn rounded-full tooltip" data-tip="Add Friends"><a href="#" class=""><i class="fa-solid fa-user-plus"></i></a></button>
+                        <button class="btn rounded-full tooltip" data-tip="Report"><a href="#" class=""><i class="fa-regular fa-flag"></i></a></button>
+                       
+                    </ul>
+                </div>
+                <div class="">
+                    <a class="btn btn-primary text-white bg-[#797DFC] text-xl font-bold mulish rounded-3xl px-8">Sign In</a>
+                </div>
+            </div>
+        </div>
+
+        <section id="banner" class="container mx-auto px-4 py-6 lg:p-12 mt-12 rounded-3xl gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-[#12132D] relative" style="background-image: url('images/bgbanner.png'); background-size: cover; background-position: center;">
+            <div id="banner-contents mx-2" class="lg:col-span-2">
+                <h1 class="text-4xl text-center lg:text-start lg:text-6xl text-white font-extrabold mulish">Welcome to the 
+                    <br><span class="mulish gradient"> ChitChat</span> Forum</h1>
+                <p class="mulish text-base p-4 lg:text-xl text-center text-white lg:text-start flex flex-col flex-wrap">Share your thoughts, ideas, and experiences with fellow writers and readers!</p>
+                <label class="input m-4 input-bordered flex items-center  lg:w-3/4">
+                    <input id="search-box" type="text" class="grow" placeholder="Search" />
+                    <button onclick="handleSearch()" class="badge bg-[#797DFC] py-4 px-8 rounded-3xl text-xl text-white font-bold">Search</button>
+                </label>
+            </div>
+            <div id="banner-counts" class="lg:col-span-1 p-4 md:p-6 lg:p-8 bg-white rounded-3xl text-center">
+                <ul class="text-center container p-6 mx-auto">
+                    <li class="gap-4 my-2 grid grid-cols-2 ">
+                        <p class="mulish font-medium text-start text-xl lg:text-2xl col-span-1">Registered Users</p>
+                        <p class="mulish font-medium text-start text-xl lg:text-2xl col-span-1">116</p>
+                    </li>
+                    <li class="my-2 grid grid-cols-2 gap-4">
+                        <p class="mulish font-medium text-start text-xl lg:text-2xl col-span-1">Forum</p>
+                        <p class="mulish font-medium text-start text-xl lg:text-2xl col-span-1">05</p>
+                    </li>
+                    <li class="my-2 grid grid-cols-2 gap-4 text-center">
+                        <p class="mulish font-medium text-start text-xl lg:text-2xl col-span-1">Topics</p>
+                        <p class="mulish font-medium text-start text-xl lg:text-2xl col-span-1">10</p>
+                    </li>
+                    <li class="my-2 grid grid-cols-2 gap-4">
+                        <p class="mulish font-medium text-start text-xl lg:text-2xl col-span-1">Replies</p>
+                        <p class="mulish font-medium text-start text-xl lg:text-2xl col-span-1">100</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <!-- Let's Discuss -->
+        <section  class="container mx-auto p-6 mt-12">
+            <div class="text-center">
+                <h2 class="mulish text-4xl font-extrabold text-[#12132D]">Let's Discuss</h2>
+                <p class="inter text-lg text-[#12132D99]">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined .</p>
+            </div>
+
+            <div id="loading-spinner" class="text-center my-20 hidden">
+                <span class="loading loading-spinner text-primary"></span>
+            </div>
+
+            
+
+            <!-- Search Cards and Search Cards Titles -->
+
+            <div id="display-discuss" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-12 hidden">
+
+                <!-- Search Cards -->
+                <div class="lg:col-span-2">
+                    <div id="card-container" class="card-container">
+                        <div class="card search-card card-side flex bg-[#7D7DFC1A] shadow-xl ">
+                            <!-- Active/Inactive status symbol -->
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Cards Titles -->
+                <div id="clicked-cards-container" class="lg:col-span-1 bg-[#7D7DFC1A] p-7 rounded-2xl">
+                    <div class="flex justify-between">
+                        <h2 class="mulish text-base font-bold text-[#12132D]">Title</h2>
+                        <p class="inter text-[#12132D99]"><i class="fa-solid text-green-400 fa-check-double"></i> Mark as read (<span id="card-count">0</span>)</p>
+                    </div>
+                    <div id="clicked-cards" class="my-6">
+                        
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- join forum -->
+
+        <section class="container rounded-2xl mt-20 mx-auto bg-[#12132D]">
+            <div class="flex flex-col lg:flex-row items-center justify-around gap-12 lg:gap-0 px-12 pt-6 lg:p-12 ">
+                <div class="lg:px-12 flex-wrap  text-center  lg:text-start" >
+                    <h2 class="mulish text-3xl lg:text-4xl text-white font-extrabold">Join Our Forum</h2>
+                    <p class="mulish text-base lg:text-lg text-white pt-2 lg:px-2 flex flex-wrap">Register now and join our thriving forum community! Engage in discussions, share your insights, and connect with like-minded individuals. </p>
+                    <button class=" text-white rounded-3xl bg-[#797DFC] mulish text-base lg:text-xl font-bold px-8 py-4 mt-6">Register Now</button>
+                
+                </div>
+                <div class="">
+                    <figure><img class="w-52 h-52 lg:w-96 lg:h-60 " src="images/joinforum.png" alt=""></figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- latest posts -->
+        <section class="container mx-auto mt-12">
+            <div class="text-center">
+                <h2 class="mulish text-4xl font-extrabold text-[#12132D]">Latest Posts</h2>
+                <p class="inter  text-lg text-[#12132D99]">Discover our latest posts and engage with a community passionate about sharing insights and experiences!</p>
+            </div>
+
+            <!-- latest posts cards -->
+            <div id="latest-post-card-container" class="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 items-center object-contain"> 
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer footer-center p-20 mt-12 bg-gradient-to-b from-slate-50 to-white ... text-primary-content">
+        <aside>
+          
+          <p class="text-[#12132D] text-4xl font-black mulish">
+            ChitChat
+          </p> 
+          <p class="text-base text-[#12132D] mulish">Explore our dynamic forum, where diverse voices converge to share insights and foster meaningful discussions!</p>
+          
+        </aside> 
+       
+        <nav>
+          <div class=" grid grid-flow-col gap-4 ">
+            <a><i class="text-lg text-[#12132D] fa-brands fa-twitter"></i></a>
+            <a><i class="text-lg text-[#12132D] fa-brands fa-facebook"></i></a>
+            <a><i class="text-lg text-[#12132D] fa-brands fa-instagram"></i></a>
+            <a><i class="text-lg text-[#12132D] fa-brands fa-github"></i></a>
+          </div>
+        </nav>
+        <hr>
+        <div>
+            <p class="mulish text-gray-500 text-base">2017, All Rights Reserved.</p>
+        </div>
+      </footer>
+    
+
+
+    <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            tippy('.tooltip', {
+                placement: 'top',
+                animation: 'fade',
+            });
+        });
+    </script>
+</body>
+</html>
